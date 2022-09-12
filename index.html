@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tributos</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="shortcut icon" href="imagen/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <ul><strong>MENU</strong>
+                <li id="lista1"><a href="https://www.gov.br/receitafederal/pt-br" target="_blank" id="a1">Receita</a></li>
+                <li id="lista2"><a href="https://sicalc.receita.economia.gov.br/sicalc/rapido/contribuinte" target="_blank" id="a2">DARF Online</a></li>
+                <li><a href="https://www.gov.br/receitafederal/pt-br/assuntos/agenda-tributaria" target="_blank" id="a3">Agenda Trib.</a></li>
+            </ul>
+        </div>
+        <div class="titulo">
+            <h1>TRIBUTOS FEDERAIS</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="fator">
+                <div>
+                    <abbr title="usar alíquota 1,6 - 8 - 16 ou 32">
+                        <label>Presunção IRPJ</label>
+                        <input type="number" onkeyup="" id="pres" placeholder="presunção1">
+                    </abbr>
+                </div>
+                    <div>
+                        <abbr title="Usar alíquota 12">
+                            <label>Presunção CSLL</label>
+                            <input type="number"  id="pres2" placeholder="Usar alíquota 12">
+                        </abbr>
+                    </div>
+                <div>
+                    <label>IRRF</label>
+                    <input type="number" value="calcular" id="retencao" placeholder="irrf">
+                </div>
+                <div>
+                    <button type="number" id="calcular" onclick="Cal()">CALCULAR</button>
+                </div>
+                <div id="clean">
+                    <button onclick="location.reload()">limpar</button>
+                </div>
+            </div>
+            <div class="tributos">
+                <div>
+                    <label>Mês 1</label>
+                    <input type="number" value="calcular" id="tab1" placeholder="1º mês">
+                </div>
+                <div>
+                    <label>Mês 2</label>
+                    <input type="number" value="calcular" id="tab2" placeholder="2º mês">
+                </div>
+                <div>
+                    <label>Mês 3</label>
+                    <input type="number" value="calcular" id="tab3" placeholder="3º mês">
+                </div>
+                <div>
+                    <label>Trimestre</label>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" value="calcular" id="trimestre">-</div>
+                </div>
+                
+            </div>
+           
+            <div class="mes1">
+                <h3>MÊS 1</h3>
+                <div>
+                    <label>PIS</label>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="pis_mes1">-</div>
+                </div>
+                <div>
+                    <label>Cofins</label>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;background-color: white;" id="cofins_mes1">-</div>
+                </div>
+                
+            </div>
+            <div class="mes2">
+                <h3>MÊS 2</h3>
+                <div>
+                    <label>PIS</label>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="pis_mes2">-</div>
+                </div>
+                <div>
+                    <label>Cofins</label>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="cofins_mes2">-</div>
+                </div>
+                
+            </div>
+            <div class="mes3">
+                <h3>MÊS 3</h3>
+                <div>
+                    <label>PIS</label>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="pis_mes3">-</div>
+                </div>
+                <div>
+                    <label>Cofins</label>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="cofins_mes3">-</div>
+                </div>
+                <div>
+                    <label>CSLL</label>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="csll_mes3">-</div>
+                </div>
+                <div>
+                    <label>IRPJ</label>
+                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="irpj_mes3">-</div>
+                </div>
+                    
+            </div>
+        </div>
+    </main>
+    <footer>
+        
+    </footer>
+    <script>
+        function Cal(){
+            let presumido_a = Number(pres.value)
+            let presumido_b = Number(pres2.value)
+            let retencao_a = Number(retencao.value)
+            let mes_1 = Number(tab1.value)
+            let mes_2 = Number(tab2.value)
+            let mes_3 = Number(tab3.value)
+            //serviço//
+            let tri_t = (mes_1 + mes_2 + mes_3)
+            let aliquota = presumido_a / 100
+            let pre_trimestre = tri_t * aliquota
+            let aliquota2 = presumido_b / 100
+            trimestre.innerHTML = `${tri_t}`
+            let pis_3 = (mes_3 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let cofins_3 = (mes_3 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let csll_3 = ((tri_t * aliquota)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let irpj_3 = (((tri_t * aliquota)*0.15)-retencao_a).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+
+            let pis_1 = (mes_1 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let cofins_1 = (mes_1 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            
+            let pis_2 = (mes_2 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+            let cofins_2 = (mes_2 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+
+            //adicional//
+
+            let adicional = ((((tri_t * aliquota)*0.15)-retencao_a)+((pre_trimestre - 60000)*0.10)).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+
+            //comercio//
+            let csll_4 = ((tri_t * aliquota2)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'}) 
+            
+            if(presumido_b == 12 && pre_trimestre <= 60000){
+                    pis_mes1.innerHTML = `${pis_1}`
+                    cofins_mes1.innerHTML = `${cofins_1}`
+                    pis_mes2.innerHTML = `${pis_2}`
+                    cofins_mes2.innerHTML = `${cofins_2}`
+                    pis_mes3.innerHTML = `${pis_3}`
+                    cofins_mes3.innerHTML = `${cofins_3}`
+                    irpj_mes3.innerHTML = `${irpj_3}`
+                    csll_mes3.innerHTML = `${csll_4}`
+            }else if(presumido_b == 12 && pre_trimestre > 60000){
+                    pis_mes1.innerHTML = `${pis_1}`
+                    cofins_mes1.innerHTML = `${cofins_1}`
+                    pis_mes2.innerHTML = `${pis_2}`
+                    cofins_mes2.innerHTML = `${cofins_2}`
+                    pis_mes3.innerHTML = `${pis_3}`
+                    cofins_mes3.innerHTML = `${cofins_3}`
+                    irpj_mes3.innerHTML = `${adicional}`
+                    csll_mes3.innerHTML = `${csll_4}`
+                    alert `Com adicional de IRPJ!`
+            }
+            
+            else if(pre_trimestre <= 60000){
+                    pis_mes1.innerHTML = `${pis_1}`
+                    cofins_mes1.innerHTML = `${cofins_1}`
+                    pis_mes2.innerHTML = `${pis_2}`
+                    cofins_mes2.innerHTML = `${cofins_2}`
+                    pis_mes3.innerHTML = `${pis_3}`
+                    cofins_mes3.innerHTML = `${cofins_3}`
+                    irpj_mes3.innerHTML = `${irpj_3}`
+                    csll_mes3.innerHTML = `${csll_3}`
+                }else{
+                    pis_mes1.innerHTML = `${pis_1}`
+                    cofins_mes1.innerHTML = `${cofins_1}`
+                    pis_mes2.innerHTML = `${pis_2}`
+                    cofins_mes2.innerHTML = `${cofins_2}`
+                    pis_mes3.innerHTML = `${pis_3}`
+                    cofins_mes3.innerHTML = `${cofins_3}`
+                    irpj_mes3.innerHTML = `${adicional}`
+                    csll_mes3.innerHTML = `${csll_3}`
+                    alert `Com adicional de IRPJ!`
+            }
+            
+        }    
+            
+            
+            
+        
+    </script>
+</body>
+</html>
+        

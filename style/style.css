@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('../imagen/imposto.jpg');
+    background-size: 100%;
+}
+
+header{
+    background-color: #0c398c;
+    box-shadow: 0px 6px 13px 0px rgba(53, 52, 52, 0.626);
+}        
+
+.menu {
+    position: absolute;
+    margin: 5%;
+}    
+
+ul > li {
+    display: none;
+}
+    
+.menu > ul:hover li {
+    display: block;
+    background-color: rgb(145, 177, 204);
+    padding: 8px;
+    
+}
+
+strong {
+    color: white;
+}
+
+li {
+    margin-top: 3px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: rgb(13, 13, 77);
+    font-size: 18px;
+    transition: all 0.3s;
+        
+}
+
+h1 {
+    color: white;
+    font-size: 4vw;
+    max-width: 100%;
+    padding: 15px;
+    text-align: center;
+}
+
+main {
+    min-width: 300px;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 5%;
+    max-width: 1000px;
+    min-height: 200px;
+    
+}
+
+.container{
+    text-align: center;
+    background-color: rgba(62, 152, 168, 0.775);
+    padding-bottom: 15px;
+    border-radius: 5px;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+.fator > div {
+    display: inline-block;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.tributos > div{
+    display: inline-block;
+    text-align: center;
+    padding-top: 10px;
+}
+
+input {
+    text-align: center;
+    width: 150px;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 16px;
+
+}
+
+#trimestre {
+    margin-left: 10px;
+}
+
+label {
+    display: flex;
+    margin-left: 10px;
+    
+}
+
+.mes2 > div,.mes3 > div, .mes1 > div {
+    display: inline-block;
+    text-align: center;
+    padding-top: 15px;
+    margin-left: 10px;
+    
+}
+
+h3 {
+    margin-top: 30px;
+}
+
+button {
+    margin-left: 10px;
+    padding: 7px;
+}
+
+footer {
+    text-align: center;
+}
