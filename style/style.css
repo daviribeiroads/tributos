@@ -9,8 +9,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-image: url('../imagen/imposto.jpg');
     background-size: 100%;
-    
-   
+      
 }
 
 header{
@@ -30,7 +29,8 @@ ul > li {
 .menu > ul:hover li {
     display: block;
     background-color: rgb(145, 177, 204);
-    padding: 8px;
+    padding: 8px 15px;
+    margin-left: 10px;
     
 }
 
@@ -52,6 +52,7 @@ a:hover {
     color: rgb(13, 13, 77);
     font-size: 18px;
     transition: all 0.3s;
+    
         
 }
 
