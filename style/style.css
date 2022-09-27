@@ -20,7 +20,18 @@ header{
 .menu {
     position: absolute;
     margin: 5%;
-}    
+}
+
+.list {
+    padding: 6px;
+    width: 100px;
+    text-align: center;
+    border-radius: 3px;
+}
+
+option {
+    background-color: rgb(127, 225, 255);
+}
 
 ul > li {
     display: none;
