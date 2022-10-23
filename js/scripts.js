@@ -70,4 +70,12 @@ function Cal(){
             alert `Com adicional de IRPJ!`
     }
     
-}    
+}
+
+function clickMenu() {
+        if(itens.style.display == 'block') {
+                itens.style.display = 'none'
+        } else {
+                itens.style.display = 'block'
+        }
+}

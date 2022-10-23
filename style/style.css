@@ -9,63 +9,68 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-image: url('../imagen/imposto.jpg');
     background-size: 100%;
+    background-image: cover;
       
 }
 
 header{
     background-color: #0c398c;
+    height: 110px;
     box-shadow: 0px 6px 13px 0px rgba(53, 52, 52, 0.626);
-}        
+}
+
+#img-menu {
+    max-width: 30px;
+    background-color: #0c398c;
+    padding: 10px;
+    
+}
 
 .menu {
+    width: 100vw;
     position: absolute;
-    margin: 5%;
+    padding-left: 50px;
 }
+
+menu > ul > li {
+    list-style-type: none;
+    padding-top: 20px;
+    background-color: #656565;
+    width: 118px;
+    border-bottom: solid 2px #7e7e7e;
+}
+
+menu > ul > li:hover {
+    background-color: #7e7e7e; 
+}
+
+menu > ul > li > a:hover{
+    font-size: 17px;
+    text-decoration: underline;
+}
+
+i {
+    cursor: pointer;
+    color: white;
+}
+
 
 .list {
     padding: 6px;
     width: 100px;
     text-align: center;
     border-radius: 3/3%
-    ;
+    
 }
 
 option {
     background-color: rgb(127, 225, 255);
 }
 
-ul > li {
-    display: none;
-}
-    
-.menu > ul:hover li {
-    display: block;
-    background-color: rgb(145, 177, 204);
-    padding: 8px 15px;
-    margin-left: 10px;
-    
-}
-
-strong {
-    color: white;
-}
-
-li {
-    margin-top: 3px;
-}
-
 a {
     text-decoration: none;
     color: white;
-}
-
-a:hover {
-    text-decoration: underline;
-    color: rgb(13, 13, 77);
-    font-size: 18px;
-    transition: all 0.3s;
-    
-        
+    margin-left: 10px;
 }
 
 h1 {
@@ -147,4 +152,4 @@ button {
 
 footer {
     text-align: center;
-},
+}
