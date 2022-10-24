@@ -19,41 +19,47 @@ header{
     box-shadow: 0px 6px 13px 0px rgba(53, 52, 52, 0.626);
 }
 
-#img-menu {
+img {
     max-width: 30px;
     background-color: #0c398c;
     padding: 10px;
-    
+    cursor: pointer;
+}
+
+ul {
+    background-color: #0c398c;
+    width: 50px;
+    cursor: pointer;
+}
+
+li {
+    display: none;
+}
+
+ul:hover li {
+    display: block;
 }
 
 .menu {
-    width: 100vw;
-    position: absolute;
     padding-left: 50px;
 }
 
 menu > ul > li {
     list-style-type: none;
     padding-top: 20px;
-    background-color: #656565;
+    background-color: #656565fe;
     width: 118px;
     border-bottom: solid 2px #7e7e7e;
 }
 
-menu > ul > li:hover {
+li:hover {
+    display: block;
     background-color: #7e7e7e; 
 }
 
-menu > ul > li > a:hover{
-    font-size: 17px;
+li > a:hover{
     text-decoration: underline;
 }
-
-i {
-    cursor: pointer;
-    color: white;
-}
-
 
 .list {
     padding: 6px;
