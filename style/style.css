@@ -30,6 +30,8 @@ ul {
     background-color: #0c398c;
     width: 50px;
     cursor: pointer;
+    color: white;
+    position: absolute;
 }
 
 li {
