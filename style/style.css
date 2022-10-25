@@ -19,26 +19,18 @@ header{
     box-shadow: 0px 6px 13px 0px rgba(53, 52, 52, 0.626);
 }
 
-img {
-    max-width: 30px;
-    background-color: #0c398c;
-    padding: 10px;
-    cursor: pointer;
-}
-
 ul {
-    background-color: #0c398c;
-    width: 50px;
+    width: 25px;
     cursor: pointer;
     color: white;
     position: absolute;
 }
 
-li {
+#itens > ul > li {
     display: none;
 }
 
-ul:hover li {
+#itens > ul:hover li {
     display: block;
 }
 
@@ -73,6 +65,10 @@ li > a:hover{
 
 option {
     background-color: rgb(127, 225, 255);
+}
+
+.menu {
+    
 }
 
 a {
