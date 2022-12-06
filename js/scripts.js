@@ -6,7 +6,7 @@ function Cal(){
     let mes_2 = Number(tab2.value)
     let mes_3 = Number(tab3.value)
     //serviço//
-    let tri_t = (mes_1 + mes_2 + mes_3)
+    let tri_t = (mes_1 + mes_2 + mes_3).toFixed(2)
     let aliquota = presumido_a / 100
     let pre_trimestre = tri_t * aliquota
     let aliquota2 = presumido_b / 100
