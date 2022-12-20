@@ -15,6 +15,7 @@ function Cal(){
     let cofins_3 = (mes_3 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
     let csll_3 = ((tri_t * aliquota)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
     let irpj_3 = (((tri_t * aliquota)*0.15)-retencao_a).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+    let csll_4 = ((tri_t * aliquota2)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
 
     let pis_1 = (mes_1 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
     let cofins_1 = (mes_1 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
@@ -28,7 +29,7 @@ function Cal(){
 
     //comercio//
                 
-    if(presumido_b == 12 && pre_trimestre <= 60000){
+    if(presumido_b === 12 && pre_trimestre <= 60000){
             pis_mes1.innerHTML = `${pis_1}`
             cofins_mes1.innerHTML = `${cofins_1}`
             pis_mes2.innerHTML = `${pis_2}`
@@ -37,7 +38,7 @@ function Cal(){
             cofins_mes3.innerHTML = `${cofins_3}`
             irpj_mes3.innerHTML = `${irpj_3}`
             csll_mes3.innerHTML = `${csll_4}`
-    }else if(presumido_b == 12 && pre_trimestre > 60000){
+    }else if(presumido_b === 12 && pre_trimestre > 60000){
             pis_mes1.innerHTML = `${pis_1}`
             cofins_mes1.innerHTML = `${cofins_1}`
             pis_mes2.innerHTML = `${pis_2}`
