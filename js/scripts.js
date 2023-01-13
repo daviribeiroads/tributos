@@ -1,31 +1,31 @@
 function Cal(){
-    let presumido_a = Number(pres.value)
-    let presumido_b = Number(pres2.value)
-    let retencao_a = Number(retencao.value)
-    let mes_1 = Number(tab1.value)
-    let mes_2 = Number(tab2.value)
-    let mes_3 = Number(tab3.value)
+    let presumido_a = document.querySelector('#pres_select');
+    let presumido_one = presumido_a.options[presumido_a.selectedIndex];
+    let text = (presumido_one.text)/100;
+    let presumido_b = Number(pres2.value)/100;
+    let retencao_a = Number(retencao.value);
+    let mes_1 = Number(tab1.value);
+    let mes_2 = Number(tab2.value);
+    let mes_3 = Number(tab3.value);
     //serviço//
-    let tri_t = (mes_1 + mes_2 + mes_3).toFixed(2)
-    let aliquota = presumido_a / 100
-    let pre_trimestre = tri_t * aliquota
-    let aliquota2 = presumido_b / 100
-    trimestre.innerHTML = `${tri_t}`
-    let pis_3 = (mes_3 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-    let cofins_3 = (mes_3 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-    let csll_3 = ((tri_t * aliquota)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-    let irpj_3 = (((tri_t * aliquota)*0.15)-retencao_a).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-    let csll_4 = ((tri_t * aliquota2)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+    let tri_t = (mes_1 + mes_2 + mes_3).toFixed(2);
+    let pre_trimestre = tri_t * text
+    trimestre.innerHTML = `${tri_t}`;
+    let pis_3 = (mes_3 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
+    let cofins_3 = (mes_3 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
+    let csll_3 = ((tri_t * text)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
+    let irpj_3 = (((tri_t * text)*0.15)-retencao_a).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
+    let csll_4 = ((tri_t * presumido_b)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
 
-    let pis_1 = (mes_1 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-    let cofins_1 = (mes_1 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+    let pis_1 = (mes_1 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
+    let cofins_1 = (mes_1 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
     
-    let pis_2 = (mes_2 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
-    let cofins_2 = (mes_2 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+    let pis_2 = (mes_2 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
+    let cofins_2 = (mes_2 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
 
     //adicional//
 
-    let adicional = ((((tri_t * aliquota)*0.15)-retencao_a)+((pre_trimestre - 60000)*0.10)).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'})
+    let adicional = ((((tri_t * text)*0.15)-retencao_a)+((pre_trimestre - 60000)*0.10)).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
 
     //comercio//
                 
@@ -72,11 +72,3 @@ function Cal(){
     }
     
 }
-
-/*function clickMenu() {
-        if (itens.style.display == 'none') {
-            itens.style.display = 'block'
-        } else {
-            itens.style.display = 'none'
-        }
-    }*/
