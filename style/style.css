@@ -24,48 +24,23 @@ select{
     text-align: center;
 }
 
-ul {
+/*ul {
     width: 25px;
     cursor: pointer;
     color: white;
     position: absolute;
-}
+}*/
 
-#itens > ul > li {
-    display: none;
-}
-
-#itens > ul:hover li {
-    display: block;
-}
-
-.menu {
-    padding-left: 50px;
-}
-
-menu > ul > li {
+.list li {
+    display: inline-block;
+    margin-right: 10px;
     list-style-type: none;
-    padding-top: 20px;
-    background-color: #656565fe;
-    width: 118px;
-    border-bottom: solid 2px #7e7e7e;
 }
 
-li:hover {
-    display: block;
-    background-color: #7e7e7e; 
-}
-
-li > a:hover{
-    text-decoration: underline;
-}
-
-.list {
-    padding: 6px;
-    width: 100px;
+nav {
+    margin: auto;
+    width: 400px;
     text-align: center;
-    border-radius: 3/3%
-    
 }
 
 option {
