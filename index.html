@@ -1,132 +1,262 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tributos</title>
-    <link rel="stylesheet" href="style/style.css" media="all">
-    <link rel="stylesheet" href="style/print.css" media="print">
-    <link rel="shortcut icon" href="imagen/favicon.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" >
+    <link rel="stylesheet" href="style/style.css" media="all" />
+    <link rel="stylesheet" href="style/print.css" media="print" />
+    <link rel="shortcut icon" href="imagen/favicon.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <script src="js/scripts.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="titulo">
-            <h1>TRIBUTOS FEDERAIS</h1>
-        </div>
-        <div class="menu">
-            <nav id="itens">
-                <ul class="list">
-                    <li id="lista1"><a href="https://www.gov.br/receitafederal/pt-br" target="_blank" id="a1">Receita</a></li>
-                    <li id="lista2"><a href="https://sicalc.receita.economia.gov.br/sicalc/rapido/contribuinte" target="_blank" id="a2">DARF Online</a></li>
-                    <li><a href="https://www.gov.br/receitafederal/pt-br/assuntos/agenda-tributaria" target="_blank" id="a3">Agenda Tributaria</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="titulo">
+        <h1>TRIBUTOS FEDERAIS</h1>
+      </div>
+      <div class="menu">
+        <nav id="itens">
+          <ul class="list">
+            <li id="lista1">
+              <a
+                href="https://www.gov.br/receitafederal/pt-br"
+                target="_blank"
+                id="a1"
+                >Receita</a
+              >
+            </li>
+            <li id="lista2">
+              <a
+                href="https://sicalc.receita.economia.gov.br/sicalc/rapido/contribuinte"
+                target="_blank"
+                id="a2"
+                >DARF Online</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.gov.br/receitafederal/pt-br/assuntos/agenda-tributaria"
+                target="_blank"
+                id="a3"
+                >Agenda Tributaria</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
-        <div class="container">
-            <div class="fator">
-                <div>
-                    <abbr title="Alíquotas 1,6 - 8 - 16 - 32">
-                        <label>Pres. IRPJ</label>
-                        <select name="presunção" id="pres_select">
-                            <option value="1.6">1.6</option>
-                            <option value="8">8</option>
-                            <option value="16">16</option>
-                            <option value="32">32</option>
-                        </select>
-                    </abbr>
-                </div>
-                    <div>
-                        <abbr title="Usar alíquota 12">
-                            <label>Pres. CSLL</label>
-                            <select name="presunção" id="pres_comercio">
-                                <option value="vazio"></option>
-                                <option value="12">12</option>
-                            </select>
-                            <!--<input type="number"  id="pres2" placeholder="Usar alíquota 12">!-->
-                        </abbr>
-                    </div>
-                <div>
-                    <label>IRRF</label>
-                    <input type="number" id="retencao" placeholder="irrf">
-                </div>
-                <div>
-                    <button id="calcular" onclick="Cal()">CALCULAR</button>
-                </div>
-                <div id="clean">
-                    <button onclick="location.reload()">limpar</button>
-                </div>
-            </div>
-            <div class="tributos">
-                <div>
-                    <label>Mês 1</label>
-                    <input type="number" id="tab1" placeholder="1º mês">
-                </div>
-                <div>
-                    <label>Mês 2</label>
-                    <input type="number" id="tab2" placeholder="2º mês">
-                </div>
-                <div>
-                    <label>Mês 3</label>
-                    <input type="number" id="tab3" placeholder="3º mês">
-                </div>
-                <div>
-                    <label>Trimestre</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" value="calcular" id="trimestre">-</div>
-                </div>
-                
-            </div>
-           
-            <div class="mes1">
-                <h3>MÊS 1</h3>
-                <div>
-                    <label>PIS</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="pis_mes1">-</div>
-                </div>
-                <div>
-                    <label>Cofins</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px;background-color: white;" id="cofins_mes1">-</div>
-                </div>
-                
-            </div>
-            <div class="mes2">
-                <h3>MÊS 2</h3>
-                <div>
-                    <label>PIS</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="pis_mes2">-</div>
-                </div>
-                <div>
-                    <label>Cofins</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="cofins_mes2">-</div>
-                </div>
-                
-            </div>
-            <div class="mes3">
-                <h3>MÊS 3</h3>
-                <div>
-                    <label>PIS</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="pis_mes3">-</div>
-                </div>
-                <div>
-                    <label>Cofins</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="cofins_mes3">-</div>
-                </div>
-                <div>
-                    <label>CSLL</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="csll_mes3">-</div>
-                </div>
-                <div>
-                    <label>IRPJ</label>
-                    <div style="border: solid 1px #7b7b7b; border-radius: 3px; padding: 6px; width: 150px; background-color: white;" id="irpj_mes3">-</div>
-                </div>
-                    
-            </div>
+      <div class="container">
+        <div class="fator">
+          <div>
+            <abbr title="Alíquotas 1,6 - 8 - 16 - 32">
+              <label>Pres. IRPJ</label>
+              <select name="presunção" id="pres_select">
+                <option value="1.6">1.6</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value="32">32</option>
+              </select>
+            </abbr>
+          </div>
+          <div>
+            <abbr title="Usar alíquota 12">
+              <label>Pres. CSLL</label>
+              <select name="presunção" id="pres_comercio">
+                <option value="vazio"></option>
+                <option value="12">12</option>
+              </select>
+              <!--<input type="number"  id="pres2" placeholder="Usar alíquota 12">!-->
+            </abbr>
+          </div>
+          <div>
+            <abbr title="Alíquota de ICMS para retirara do caclculo do PIS/Cofins">
+              <label>Alíq. ICMS</label>
+              <select name="presunção" id="calc_icms">
+                <option value="vazio"></option>
+                <option value="12"> 7</option>
+                <option value="12">12</option>
+                <option value="12">19</option>
+              </select>
+            </abbr>
+          </div>
+          <div>
+            <label>IRRF</label>
+            <input type="number" id="retencao" placeholder="irrf" />
+          </div>
+          <div>
+            <button id="calcular" onclick="Cal()">CALCULAR</button>
+          </div>
+          <div id="clean">
+            <button onclick="location.reload()">limpar</button>
+          </div>
         </div>
+        <div class="tributos">
+          <div>
+            <label>Mês 1</label>
+            <input type="number" id="tab1" placeholder="1º mês" />
+          </div>
+          <div>
+            <label>Mês 2</label>
+            <input type="number" id="tab2" placeholder="2º mês" />
+          </div>
+          <div>
+            <label>Mês 3</label>
+            <input type="number" id="tab3" placeholder="3º mês" />
+          </div>
+          <div>
+            <label>Trimestre</label>
+            <div
+              style="
+                border: solid 1px #7b7b7b;
+                border-radius: 3px;
+                padding: 6px;
+                width: 150px;
+                background-color: white;
+              "
+              value="calcular"
+              id="trimestre"
+            >
+              -
+            </div>
+          </div>
+        </div>
+
+        <div class="mes1">
+          <h3>MÊS 1</h3>
+          <div>
+            <label>PIS</label>
+            <div
+              style="
+                border: solid 1px #7b7b7b;
+                border-radius: 3px;
+                padding: 6px;
+                width: 150px;
+                background-color: white;
+              "
+              id="pis_mes1"
+            >
+              -
+            </div>
+          </div>
+          <div>
+            <label>Cofins</label>
+            <div
+              style="
+                border: solid 1px #7b7b7b;
+                border-radius: 3px;
+                padding: 6px;
+                width: 150px;
+                background-color: white;
+              "
+              id="cofins_mes1"
+            >
+              -
+            </div>
+          </div>
+        </div>
+        <div class="mes2">
+          <h3>MÊS 2</h3>
+          <div>
+            <label>PIS</label>
+            <div
+              style="
+                border: solid 1px #7b7b7b;
+                border-radius: 3px;
+                padding: 6px;
+                width: 150px;
+                background-color: white;
+              "
+              id="pis_mes2"
+            >
+              -
+            </div>
+          </div>
+          <div>
+            <label>Cofins</label>
+            <div
+              style="
+                border: solid 1px #7b7b7b;
+                border-radius: 3px;
+                padding: 6px;
+                width: 150px;
+                background-color: white;
+              "
+              id="cofins_mes2"
+            >
+              -
+            </div>
+          </div>
+        </div>
+        <div class="mes3">
+          <h3>MÊS 3</h3>
+          <div>
+            <label>PIS</label>
+            <div
+              style="
+                border: solid 1px #7b7b7b;
+                border-radius: 3px;
+                padding: 6px;
+                width: 150px;
+                background-color: white;
+              "
+              id="pis_mes3"
+            >
+              -
+            </div>
+          </div>
+          <div>
+            <label>Cofins</label>
+            <div
+              style="
+                border: solid 1px #7b7b7b;
+                border-radius: 3px;
+                padding: 6px;
+                width: 150px;
+                background-color: white;
+              "
+              id="cofins_mes3"
+            >
+              -
+            </div>
+          </div>
+          <div>
+            <label>CSLL</label>
+            <div
+              style="
+                border: solid 1px #7b7b7b;
+                border-radius: 3px;
+                padding: 6px;
+                width: 150px;
+                background-color: white;
+              "
+              id="csll_mes3"
+            >
+              -
+            </div>
+          </div>
+          <div>
+            <label>IRPJ</label>
+            <div
+              style="
+                border: solid 1px #7b7b7b;
+                border-radius: 3px;
+                padding: 6px;
+                width: 150px;
+                background-color: white;
+              "
+              id="irpj_mes3"
+            >
+              -
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>
-        
