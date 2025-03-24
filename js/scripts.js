@@ -1,78 +1,49 @@
-function Cal(){
-    let presumido_a = document.querySelector('#pres_select');
-    let presumido_irpj = presumido_a.options[presumido_a.selectedIndex];
-    let presIrpj = (presumido_irpj.text)/100;
-    //let irpjPresumido = a/100;//
-    let presumido_b = document.querySelector('#pres_comercio');
-    let presumido_csll = presumido_b.options[presumido_b.selectedIndex];
-    let presCsll = (presumido_csll.text)/100;
-    //let presumido_b = Number(pres2.value)/100;//
-    let retencao_a = Number(retencao.value);
-    let mes_1 = Number(tab1.value);
-    let mes_2 = Number(tab2.value);
-    let mes_3 = Number(tab3.value);
-    //serviço//
-    let tri_t = (mes_1 + mes_2 + mes_3).toFixed(2);
-    let pre_trimestre = tri_t * presIrpj
-    trimestre.innerHTML = `${tri_t}`;
-    let pis_3 = (mes_3 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
-    let cofins_3 = (mes_3 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
-    let csll_3 = ((tri_t * presIrpj)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
-    let irpj_3 = (((tri_t * presIrpj)*0.15)-retencao_a).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
-    let csll_4 = ((tri_t * presCsll)*0.09).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
-
-    let pis_1 = (mes_1 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
-    let cofins_1 = (mes_1 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
+function Cal() {
+        // Obtendo valores dos selects corretamente
+        const presIrpj = Number(document.querySelector('#pres_select').value) / 100;
+        const presCsll = Number(document.querySelector('#pres_comercio').value) / 100;
     
-    let pis_2 = (mes_2 * 0.0065).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
-    let cofins_2 = (mes_2 * 0.03).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
-
-    //adicional//
-
-    let adicional = ((((tri_t * presIrpj)*0.15)-retencao_a)+((pre_trimestre - 60000)*0.10)).toLocaleString('pt-BR',{style: 'currency', currency: 'BRL'});
-
-    //comercio//
-                
-    if(presCsll === 0.12 && pre_trimestre <= 60000){
-            pis_mes1.innerHTML = `${pis_1}`
-            cofins_mes1.innerHTML = `${cofins_1}`
-            pis_mes2.innerHTML = `${pis_2}`
-            cofins_mes2.innerHTML = `${cofins_2}`
-            pis_mes3.innerHTML = `${pis_3}`
-            cofins_mes3.innerHTML = `${cofins_3}`
-            irpj_mes3.innerHTML = `${irpj_3}`
-            csll_mes3.innerHTML = `${csll_4}`
-    }else if(presCsll === 0.12 && pre_trimestre > 60000){
-            pis_mes1.innerHTML = `${pis_1}`
-            cofins_mes1.innerHTML = `${cofins_1}`
-            pis_mes2.innerHTML = `${pis_2}`
-            cofins_mes2.innerHTML = `${cofins_2}`
-            pis_mes3.innerHTML = `${pis_3}`
-            cofins_mes3.innerHTML = `${cofins_3}`
-            irpj_mes3.innerHTML = `${adicional}`
-            csll_mes3.innerHTML = `${csll_4}`
-            alert `Com adicional de IRPJ!`
+        // Pegando os valores numéricos dos inputs
+        const retencao = Number(document.querySelector('#retencao').value);
+        const mes_1 = Number(document.querySelector('#tab1').value);
+        const mes_2 = Number(document.querySelector('#tab2').value);
+        const mes_3 = Number(document.querySelector('#tab3').value);
+    
+        // Cálculo do trimestre
+        const tri_t = mes_1 + mes_2 + mes_3;
+        const pre_trimestre = tri_t * presIrpj;
+    
+        // Função para formatar valores em moeda BRL
+        const formatarMoeda = valor => valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    
+        // Cálculo dos tributos para cada mês
+        const pis = [mes_1, mes_2, mes_3].map(mes => formatarMoeda(mes * 0.0065));
+        const cofins = [mes_1, mes_2, mes_3].map(mes => formatarMoeda(mes * 0.03));
+    
+        // Cálculo de IRPJ e CSLL
+        const csll_3 = formatarMoeda((pre_trimestre * 0.09));
+        const csll_4 = formatarMoeda((tri_t * presCsll) * 0.09);
+        const irpj_3 = formatarMoeda(((pre_trimestre * 0.15) - retencao));
+    
+        // Cálculo do adicional de IRPJ
+        const adicional = formatarMoeda(((pre_trimestre * 0.15) - retencao) + ((pre_trimestre - 60000) * 0.10));
+    
+        // Atualizando os valores na tela
+        document.querySelector('#trimestre').innerHTML = formatarMoeda(tri_t);
+        document.querySelector('#pis_mes1').innerHTML = pis[0];
+        document.querySelector('#pis_mes2').innerHTML = pis[1];
+        document.querySelector('#pis_mes3').innerHTML = pis[2];
+        document.querySelector('#cofins_mes1').innerHTML = cofins[0];
+        document.querySelector('#cofins_mes2').innerHTML = cofins[1];
+        document.querySelector('#cofins_mes3').innerHTML = cofins[2];
+    
+        // Lógica de tributação com base no valor do trimestre
+        if (presCsll === 0.12 && pre_trimestre > 60000) {
+            document.querySelector('#irpj_mes3').innerHTML = adicional;
+            document.querySelector('#csll_mes3').innerHTML = csll_4;
+            alert("Com adicional de IRPJ!");
+        } else {
+            document.querySelector('#irpj_mes3').innerHTML = irpj_3;
+            document.querySelector('#csll_mes3').innerHTML = pre_trimestre <= 60000 ? csll_3 : csll_4;
+        }
     }
-    
-    else if(pre_trimestre <= 60000){
-            pis_mes1.innerHTML = `${pis_1}`
-            cofins_mes1.innerHTML = `${cofins_1}`
-            pis_mes2.innerHTML = `${pis_2}`
-            cofins_mes2.innerHTML = `${cofins_2}`
-            pis_mes3.innerHTML = `${pis_3}`
-            cofins_mes3.innerHTML = `${cofins_3}`
-            irpj_mes3.innerHTML = `${irpj_3}`
-            csll_mes3.innerHTML = `${csll_3}`
-        }else{
-            pis_mes1.innerHTML = `${pis_1}`
-            cofins_mes1.innerHTML = `${cofins_1}`
-            pis_mes2.innerHTML = `${pis_2}`
-            cofins_mes2.innerHTML = `${cofins_2}`
-            pis_mes3.innerHTML = `${pis_3}`
-            cofins_mes3.innerHTML = `${cofins_3}`
-            irpj_mes3.innerHTML = `${adicional}`
-            csll_mes3.innerHTML = `${csll_3}`
-            alert `Com adicional de IRPJ!`
-    }
-    
-}
