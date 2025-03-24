@@ -2,7 +2,7 @@ function Cal() {
     // Obtendo valores dos selects corretamente
     const presIrpj = Number(document.querySelector('#pres_select').value) / 100;
     const presCsll = Number(document.querySelector('#pres_comercio').value) / 100;
-    const presIcms = Number(document.querySelector('#calc_icms').value) / 100;
+    const presIcms = Number(document.querySelector('#calc_icms').value) / 100 || 0;
 
     // Pegando os valores numéricos dos inputs
     const retencao = Number(document.querySelector('#retencao').value);
@@ -19,7 +19,13 @@ function Cal() {
 
     // Cálculo dos tributos para cada mês
     const calcularPisCofins = (mes) => {
+        console.log("presIcms selecionado:", presIcms); // 🔍 Verificar se o valor está correto
+        console.log("Valor do mês:", mes); 
+
         const base = mes * (1 - presIcms); // Base de cálculo reduzida pelo ICMS
+
+        console.log("Base de cálculo (deduzida do ICMS):", base);
+
         return {
             pis: formatarMoeda(base * 0.0065),
             cofins: formatarMoeda(base * 0.03)
